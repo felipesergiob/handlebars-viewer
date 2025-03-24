@@ -1,0 +1,39 @@
+{
+  "title": "Relatório Médico",
+  "patient": {
+    "name": "Felipe Sergio",
+    "age": 32,
+    "address": "Av. Paulista, 1000, São Paulo - SP",
+    "phone": "(11) 98765-4321"
+  },
+  "doctor": {
+    "name": "Dr. João Silva",
+    "specialty": "Clínica Geral",
+    "crm": "CRM/SP 12345"
+  },
+  "consultation": {
+    "date": "10/06/2023",
+    "time": "14:30",
+    "reason": "Consulta de rotina e avaliação de resultados de exames"
+  },
+  "prescription": [
+    {
+      "medication": "Paracetamol",
+      "dosage": "500mg",
+      "frequency": "8 em 8 horas",
+      "duration": "5 dias"
+    },
+    {
+      "medication": "Amoxicilina",
+      "dosage": "250mg",
+      "frequency": "12 em 12 horas",
+      "duration": "7 dias"
+    },
+    {
+      "medication": "Loratadina",
+      "dosage": "10mg",
+      "frequency": "24 em 24 horas",
+      "duration": "10 dias"
+    }
+  ]
+} 

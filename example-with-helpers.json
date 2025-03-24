@@ -1,0 +1,53 @@
+{
+  "title": "Relatório Médico Completo",
+  "patient": {
+    "name": "felipe sergio santos",
+    "age": 32,
+    "address": "Av. Paulista, 1000, São Paulo - SP",
+    "phone": "(11) 98765-4321",
+    "birthdate": "1991-06-15",
+    "insurance": "Plano Saúde Premium"
+  },
+  "doctor": {
+    "name": "Dr. João Silva",
+    "specialty": "Clínica Geral",
+    "crm": "CRM/SP 12345"
+  },
+  "consultation": {
+    "date": "2023-06-10",
+    "time": "14:30",
+    "reason": "Consulta de rotina e avaliação de resultados de exames",
+    "vitals": {
+      "Pressão Arterial": "120/80 mmHg",
+      "Frequência Cardíaca": "72 bpm",
+      "Temperatura": "36.5 °C",
+      "Saturação O2": "98%",
+      "Glicemia": "85 mg/dL"
+    },
+    "cost": 250.00,
+    "notes": "Paciente apresentou melhora significativa após o tratamento anterior. Recomenda-se manter a hidratação e continuar com as medicações prescritas."
+  },
+  "prescription": [
+    {
+      "medication": "Paracetamol",
+      "dosage": "500mg",
+      "frequency": "8 em 8 horas",
+      "duration": "5 dias",
+      "priority": "medium"
+    },
+    {
+      "medication": "Amoxicilina",
+      "dosage": "250mg",
+      "frequency": "12 em 12 horas",
+      "duration": "7 dias",
+      "priority": "high"
+    },
+    {
+      "medication": "Loratadina",
+      "dosage": "10mg",
+      "frequency": "24 em 24 horas",
+      "duration": "10 dias",
+      "priority": "low"
+    }
+  ]
+} 

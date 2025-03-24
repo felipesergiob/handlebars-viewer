@@ -1,0 +1,62 @@
+{
+  "name": "handlebars-viewer",
+  "displayName": "Handlebars Viewer",
+  "description": "Simple Handlebars template viewer with real data",
+  "version": "0.0.1",
+  "publisher": "handlebars-viewer",
+  "engines": {
+    "vscode": "^1.96.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "handlebars",
+        "extensions": [
+          ".hbs",
+          ".handlebars"
+        ],
+        "aliases": [
+          "Handlebars",
+          "handlebars"
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "handlebarsViewer.preview",
+        "title": "Preview Handlebars Template"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "handlebarsViewer.preview",
+          "when": "resourceExtname == .hbs || resourceExtname == .handlebars",
+          "group": "navigation"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint"
+  },
+  "devDependencies": {
+    "@types/node": "20.x",
+    "@types/vscode": "^1.96.0",
+    "eslint": "^8.56.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "handlebars": "^4.7.8",
+    "open": "^8.4.2",
+    "puppeteer": "^24.4.0"
+  }
+}

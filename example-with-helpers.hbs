@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-radius: 5px;
+    }
+    .header {
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+    }
+    .header h1 {
+      color: #2c3e50;
+      margin-bottom: 5px;
+    }
+    .header h3 {
+      color: #7f8c8d;
+      margin-top: 0;
+    }
+    .patient-info {
+      margin-bottom: 20px;
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    .patient-info h2 {
+      color: #3498db;
+      margin-top: 0;
+    }
+    .consultation {
+      margin-bottom: 20px;
+    }
+    .consultation h2 {
+      color: #2ecc71;
+    }
+    .prescription {
+      border: 1px solid #eee;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #f1f9f1;
+    }
+    .prescription h2 {
+      color: #e74c3c;
+      margin-top: 0;
+    }
+    .prescription ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .prescription li {
+      border-bottom: 1px dashed #ddd;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+    .prescription li:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .footer {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 0.8em;
+      color: #7f8c8d;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    table th, table td {
+      padding: 8px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    table th {
+      background-color: #f2f2f2;
+    }
+    .tag {
+      display: inline-block;
+      padding: 3px 8px;
+      background-color: #e1f5fe;
+      border-radius: 12px;
+      margin-right: 5px;
+      font-size: 0.8em;
+    }
+    .priority-high {
+      background-color: #ffcdd2;
+      color: #b71c1c;
+    }
+    .priority-medium {
+      background-color: #fff9c4;
+      color: #f57f17;
+    }
+    .priority-low {
+      background-color: #c8e6c9;
+      color: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>{{uppercase title}}</h1>
+      <h3>{{doctor.name}} - {{doctor.specialty}}</h3>
+      <p>{{doctor.crm}}</p>
+      <p><strong>Data:</strong> {{formatDate consultation.date 'dd/mm/yyyy'}}</p>
+    </div>
+
+    <div class="patient-info">
+      <h2>Dados do Paciente</h2>
+      <p><strong>Nome:</strong> {{capitalize patient.name}}</p>
+      <p><strong>Idade:</strong> {{patient.age}} anos</p>
+      <p><strong>Endereço:</strong> {{patient.address}}</p>
+      <p><strong>Telefone:</strong> {{patient.phone}}</p>
+      
+      {{#if patient.birthdate}}
+        <p><strong>Data de Nascimento:</strong> {{formatDate patient.birthdate 'dd/mm/yyyy'}}</p>
+        <p><strong>Idade calculada:</strong> {{calcAge patient.birthdate}} anos</p>
+      {{/if}}
+      
+      {{#if patient.insurance}}
+        <p><strong>Convênio:</strong> {{patient.insurance}}</p>
+      {{/if}}
+    </div>
+
+    <div class="consultation">
+      <h2>Detalhes da Consulta</h2>
+      <p><strong>Data:</strong> {{consultation.date}}</p>
+      <p><strong>Horário:</strong> {{consultation.time}}</p>
+      <p><strong>Motivo:</strong> {{consultation.reason}}</p>
+      
+      {{#if consultation.vitals}}
+        <h3>Sinais Vitais</h3>
+        <table>
+          <tr>
+            <th>Medida</th>
+            <th>Valor</th>
+          </tr>
+          {{#each consultation.vitals}}
+            <tr>
+              <td>{{@key}}</td>
+              <td>{{this}}</td>
+            </tr>
+          {{/each}}
+        </table>
+      {{/if}}
+      
+      {{#if consultation.cost}}
+        <p><strong>Valor da Consulta:</strong> {{formatCurrency consultation.cost}}</p>
+      {{/if}}
+    </div>
+
+    <div class="prescription">
+      <h2>Prescrição Médica</h2>
+      
+      {{#ifCond prescription.length '>' 0}}
+        {{#numbered_list prescription}}
+          <strong>{{this.medication}}</strong> - {{this.dosage}}
+          <p>Tomar a cada {{this.frequency}} por {{this.duration}}</p>
+          
+          {{#if this.priority}}
+            <span class="tag priority-{{this.priority}}">
+              Prioridade: {{capitalize this.priority}}
+            </span>
+          {{/if}}
+        {{/numbered_list}}
+      {{else}}
+        <p>Nenhuma prescrição médica necessária.</p>
+      {{/ifCond}}
+      
+      {{#if consultation.notes}}
+        <h3>Observações</h3>
+        <p>{{consultation.notes}}</p>
+      {{/if}}
+    </div>
+    
+    <div class="footer">
+      <p>Este documento é um relatório médico oficial emitido em {{consultation.date}}.</p>
+      <p>© {{consultation.date.split("/")[2]}} - Todos os direitos reservados</p>
+      
+      {{#repeat 3}}
+        <div>Linha de assinatura {{index}}</div>
+      {{/repeat}}
+    </div>
+  </div>
+</body>
+</html> 

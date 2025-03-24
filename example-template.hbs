@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>{{title}}</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: white;
+      padding: 30px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-radius: 5px;
+    }
+    .header {
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+    }
+    .header h1 {
+      color: #2c3e50;
+      margin-bottom: 5px;
+    }
+    .header h3 {
+      color: #7f8c8d;
+      margin-top: 0;
+    }
+    .patient-info {
+      margin-bottom: 20px;
+      background-color: #f8f9fa;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    .patient-info h2 {
+      color: #3498db;
+      margin-top: 0;
+    }
+    .consultation {
+      margin-bottom: 20px;
+    }
+    .consultation h2 {
+      color: #2ecc71;
+    }
+    .prescription {
+      border: 1px solid #eee;
+      padding: 15px;
+      border-radius: 5px;
+      background-color: #f1f9f1;
+    }
+    .prescription h2 {
+      color: #e74c3c;
+      margin-top: 0;
+    }
+    .prescription ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .prescription li {
+      border-bottom: 1px dashed #ddd;
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+    .prescription li:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .footer {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 0.8em;
+      color: #7f8c8d;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>{{title}}</h1>
+      <h3>{{doctor.name}} - {{doctor.specialty}}</h3>
+      <p>{{doctor.crm}}</p>
+    </div>
+
+    <div class="patient-info">
+      <h2>Dados do Paciente</h2>
+      <p><strong>Nome:</strong> {{patient.name}}</p>
+      <p><strong>Idade:</strong> {{patient.age}} anos</p>
+      <p><strong>Endereço:</strong> {{patient.address}}</p>
+      <p><strong>Telefone:</strong> {{patient.phone}}</p>
+    </div>
+
+    <div class="consultation">
+      <h2>Detalhes da Consulta</h2>
+      <p><strong>Data:</strong> {{consultation.date}}</p>
+      <p><strong>Horário:</strong> {{consultation.time}}</p>
+      <p><strong>Motivo:</strong> {{consultation.reason}}</p>
+    </div>
+
+    <div class="prescription">
+      <h2>Prescrição Médica</h2>
+      <ul>
+        {{#each prescription}}
+        <li>
+          <p><strong>{{this.medication}}</strong> - {{this.dosage}}</p>
+          <p>Tomar a cada {{this.frequency}} por {{this.duration}}</p>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
+    
+    <div class="footer">
+      <p>Este documento é um relatório médico oficial emitido em {{consultation.date}}.</p>
+      <p>© {{consultation.date.split("/")[2]}} - Todos os direitos reservados</p>
+    </div>
+  </div>
+</body>
+</html> 

@@ -1,0 +1,7 @@
+[
+  {
+    "key": "ctrl+alt+h",
+    "command": "handlebars-viewer.previewHandlebars",
+    "when": "editorTextFocus && (resourceExtname == .hbs || resourceExtname == .handlebars)"
+  }
+] 

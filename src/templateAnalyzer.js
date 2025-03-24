@@ -22,21 +22,57 @@ function analyzeTemplate(templateContent) {
  */
 function extractVariables(templateContent) {
     const variables = [];
-    // Enhanced regex to capture variables even with pipes/helpers
-    // Captures content after the pipe or direct variable if no pipe exists
-    const regex = /\{\{\s*(?:(?:[^}|]+)\|\s*)?([^}|]+)(?:\s*\|[^}]*)?}}/g;
+    // Main regex to capture Handlebars expressions
+    const handlebarsExprRegex = /\{\{([^{}]*)\}\}/g;
     let match;
 
-    while ((match = regex.exec(templateContent)) !== null) {
-        const variablePath = match[1].trim();
+    while ((match = handlebarsExprRegex.exec(templateContent)) !== null) {
+        const expr = match[1].trim();
         
-        // Ignore common Handlebars helpers and blocks
-        if (!variablePath.startsWith('if') && 
-            !variablePath.startsWith('each') && 
-            !variablePath.startsWith('#') && 
-            !variablePath.startsWith('/') &&
-            !variablePath.startsWith('else')) {
-            variables.push(variablePath);
+        // Ignore block expressions like #if, #each, /if, etc.
+        if (expr.startsWith('#') || expr.startsWith('/') || expr.startsWith('else')) {
+            continue;
+        }
+        
+        // Ignore common helpers
+        if (expr.startsWith('if ') || expr.startsWith('each ') || 
+            expr.startsWith('unless ') || expr.startsWith('with ')) {
+            continue;
+        }
+        
+        // Extract variables from expressions with helpers like formatDate, now, etc.
+        if (expr.includes(' ')) {
+            const parts = expr.split(' ');
+            const helperName = parts[0];
+            
+            // Ignore helper calls without parameters or with literals
+            if (parts.length === 1 || parts[1].startsWith('"') || parts[1].startsWith("'") || 
+                parts[1].startsWith('(') || helperName === 'now') {
+                continue;
+            }
+            
+            // For helpers with parameters, analyze parameters to identify real variables
+            for (let i = 1; i < parts.length; i++) {
+                let param = parts[i].trim();
+                
+                // Ignore string or number literals
+                if (param.startsWith('"') || param.startsWith("'") || !isNaN(parseFloat(param))) {
+                    continue;
+                }
+                
+                // Remove parentheses to capture variables inside expressions like (user.name)
+                if (param.startsWith('(') && param.endsWith(')')) {
+                    param = param.substring(1, param.length - 1).trim();
+                }
+                
+                // Check if it's not another helper or helper expression
+                if (!param.includes('(') && !param.includes(')') && param !== 'this') {
+                    variables.push(param);
+                }
+            }
+        } else {
+            // Simple expression without spaces - likely a direct variable
+            variables.push(expr);
         }
     }
 

@@ -11,6 +11,12 @@ const os = require('os');
 const { analyzeTemplate } = require('./templateAnalyzer');
 const { generatePDF } = require('./pdfGenerator');
 
+// Configure Handlebars to not fail when a helper is missing
+handlebars.registerHelper('helperMissing', function(/* dynamic arguments */) {
+    // Return empty string instead of throwing an error
+    return '';
+});
+
 // Server instance
 let server = null;
 let lastCheck = Date.now();
@@ -149,16 +155,28 @@ function createViewerHTML(templateBaseName) {
                     position: fixed;
                     bottom: 20px;
                     right: 20px;
-                    background: #4CAF50;
+                    background: #3366CC;
                     color: white;
-                    padding: 10px 20px;
-                    border-radius: 5px;
-                    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                    padding: 12px 24px;
+                    border-radius: 8px;
+                    box-shadow: 0 4px 10px rgba(51, 102, 204, 0.3);
                     display: none;
                     z-index: 1000;
+                    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                    font-weight: 500;
+                    font-size: 14px;
+                    letter-spacing: 0.3px;
+                    transition: all 0.3s ease;
+                    border-left: 4px solid #1E45A0;
+                    opacity: 0.95;
                 }
                 .status.visible {
                     display: block;
+                    animation: fadeIn 0.5s ease;
+                }
+                @keyframes fadeIn {
+                    from { opacity: 0; transform: translateY(10px); }
+                    to { opacity: 0.95; transform: translateY(0); }
                 }
             </style>
         </head>

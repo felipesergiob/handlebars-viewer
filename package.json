@@ -4,11 +4,20 @@
   "description": "Simple Handlebars template viewer with real data",
   "version": "0.0.1",
   "publisher": "handlebars-viewer",
+  "icon": "icon.svg",
   "engines": {
     "vscode": "^1.96.0"
   },
   "categories": [
     "Other"
+  ],
+  "keywords": [
+    "handlebars",
+    "template",
+    "preview",
+    "html",
+    "templating",
+    "hbs"
   ],
   "activationEvents": [
     "onStartupFinished"
@@ -74,6 +83,15 @@
     "lint": "eslint .",
     "pretest": "npm run lint"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/handlebars-viewer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/handlebars-viewer/issues"
+  },
+  "homepage": "https://github.com/yourusername/handlebars-viewer#readme",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "20.x",
     "@types/vscode": "^1.96.0",

@@ -7,6 +7,8 @@ Simple Handlebars template viewer with real data.
 - 👁️ **Real-time preview** - See your Handlebars templates rendered with real data
 - 🔄 **Auto-refresh** - Changes to template or data are automatically updated
 - 🖱️ **Easy to use** - A status bar button, similar to Live Server
+- 📊 **Custom helpers support** - Use built-in and custom Handlebars helpers
+- 🎨 **Side panel preview** - View templates in VS Code's side panel
 
 ## How to use
 
@@ -14,15 +16,13 @@ Simple Handlebars template viewer with real data.
 
 ### 2. Click the "Handlebars" button in the status bar (bottom of VS Code)
 
-![Status bar button](https://via.placeholder.com/300x50?text=Status+Bar+Button)
-
 Or use:
 - The context menu (right-click) and select "Preview Handlebars Template"
 - The command palette (Ctrl+Shift+P or Cmd+Shift+P) and type "Handlebars"
 
 ### 3. Your browser will automatically open showing the rendered template
 
-The extension will look for a JSON file with the same name as your template to provide the data. For example, for `example-template.hbs`, it will look for `example-template.json`. If it doesn't find one, it will create a sample data file.
+The extension will look for a JSON file with the same name as your template to provide the data. For example, for `example-with-helpers.hbs`, it will look for `example-with-helpers.json`. If it doesn't find one, it will create a sample data file.
 
 ## How it works
 
@@ -40,8 +40,8 @@ The extension will look for a JSON file with the same name as your template to p
 
 To test the extension, use the included example files:
 
-- `example-template.hbs`
-- `example-template.json`
+- `example-with-helpers.hbs`
+- `example-with-helpers.json`
 
 ## License
 

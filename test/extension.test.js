@@ -1,12 +1,24 @@
 const assert = require('assert');
-
-// You can import and use all API from the 'vscode' module
-// as well as import your extension to test it
 const vscode = require('vscode');
-// const myExtension = require('../extension');
 
-suite('Extension Test Suite', () => {
+suite('Handlebars Viewer Extension Test Suite', () => {
 	vscode.window.showInformationMessage('Start all tests.');
+
+	test('Extension should be present', () => {
+		assert.ok(vscode.extensions.getExtension('handlebars-viewer'));
+	});
+
+	test('Should activate', async () => {
+		const extension = vscode.extensions.getExtension('handlebars-viewer');
+		await extension.activate();
+		assert.strictEqual(extension.isActive, true);
+	});
+
+	test('Should register commands', () => {
+		const commands = vscode.commands.getCommands();
+		assert.ok(commands.includes('handlebarsViewer.preview'));
+		assert.ok(commands.includes('handlebarsViewer.openInPanel'));
+	});
 
 	test('Sample test', () => {
 		assert.strictEqual(-1, [1, 2, 3].indexOf(5));

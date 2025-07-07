@@ -4,7 +4,7 @@
   "description": "Simple Handlebars template viewer with real data",
   "version": "0.0.1",
   "publisher": "handlebars-viewer",
-  "icon": "icon.svg",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.96.0"
   },

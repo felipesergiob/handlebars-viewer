@@ -32,6 +32,10 @@
       {
         "command": "handlebarsViewer.preview",
         "title": "Preview Handlebars Template"
+      },
+      {
+        "command": "handlebarsViewer.openInPanel",
+        "title": "Open Handlebars Preview in Side Panel"
       }
     ],
     "menus": {
@@ -40,6 +44,28 @@
           "command": "handlebarsViewer.preview",
           "when": "resourceExtname == .hbs || resourceExtname == .handlebars",
           "group": "navigation"
+        },
+        {
+          "command": "handlebarsViewer.openInPanel",
+          "when": "resourceExtname == .hbs || resourceExtname == .handlebars",
+          "group": "navigation"
+        }
+      ]
+    },
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "handlebars-viewer",
+          "title": "Handlebars Viewer",
+          "icon": "$(file-pdf)"
+        }
+      ]
+    },
+    "views": {
+      "handlebars-viewer": [
+        {
+          "id": "handlebarsViewer",
+          "name": "Handlebars Preview"
         }
       ]
     }

@@ -1,52 +1,52 @@
 {
-  "title": "Relatório Médico Completo",
+  "title": "Medical Report",
   "patient": {
-    "name": "felipe sergio santos",
+    "name": "john doe",
     "age": 32,
-    "address": "Av. Paulista, 1000, São Paulo - SP",
-    "phone": "(11) 98765-4321",
+    "address": "123 Main St, New York, NY",
+    "phone": "(555) 123-4567",
     "birthdate": "1991-06-15",
-    "insurance": "Plano Saúde Premium"
+    "insurance": "Premium Health Insurance"
   },
   "doctor": {
-    "name": "Dr. João Silva",
-    "specialty": "Clínica Geral",
-    "crm": "CRM/SP 12345"
+    "name": "Dr. Jane Smith",
+    "specialty": "General Practice",
+    "crm": "MD/12345"
   },
   "consultation": {
     "date": "2023-06-10",
     "time": "14:30",
-    "reason": "Consulta de rotina e avaliação de resultados de exames",
+    "reason": "Routine checkup and test results evaluation",
     "vitals": {
-      "Pressão Arterial": "120/80 mmHg",
-      "Frequência Cardíaca": "72 bpm",
-      "Temperatura": "36.5 °C",
-      "Saturação O2": "98%",
-      "Glicemia": "85 mg/dL"
+      "Blood Pressure": "120/80 mmHg",
+      "Heart Rate": "72 bpm",
+      "Temperature": "36.5 °C",
+      "O2 Saturation": "98%",
+      "Blood Glucose": "85 mg/dL"
     },
     "cost": 250.00,
-    "notes": "Paciente apresentou melhora significativa após o tratamento anterior. Recomenda-se manter a hidratação e continuar com as medicações prescritas."
+    "notes": "Patient showed significant improvement after previous treatment. Hydration and prescribed medications should be continued."
   },
   "prescription": [
     {
-      "medication": "Paracetamol",
+      "medication": "Acetaminophen",
       "dosage": "500mg",
-      "frequency": "8 em 8 horas",
-      "duration": "5 dias",
+      "frequency": "every 8 hours",
+      "duration": "5 days",
       "priority": "medium"
     },
     {
-      "medication": "Amoxicilina",
+      "medication": "Amoxicillin",
       "dosage": "250mg",
-      "frequency": "12 em 12 horas",
-      "duration": "7 dias",
+      "frequency": "every 12 hours",
+      "duration": "7 days",
       "priority": "high"
     },
     {
-      "medication": "Loratadina",
+      "medication": "Loratadine",
       "dosage": "10mg",
-      "frequency": "24 em 24 horas",
-      "duration": "10 dias",
+      "frequency": "every 24 hours",
+      "duration": "10 days",
       "priority": "low"
     }
   ]

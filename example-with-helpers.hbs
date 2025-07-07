@@ -118,38 +118,38 @@
       <h1>{{uppercase title}}</h1>
       <h3>{{doctor.name}} - {{doctor.specialty}}</h3>
       <p>{{doctor.crm}}</p>
-      <p><strong>Data:</strong> {{formatDate consultation.date 'dd/mm/yyyy'}}</p>
+      <p><strong>Date:</strong> {{formatDate consultation.date 'dd/mm/yyyy'}}</p>
     </div>
 
     <div class="patient-info">
-      <h2>Dados do Paciente</h2>
-      <p><strong>Nome:</strong> {{capitalize patient.name}}</p>
-      <p><strong>Idade:</strong> {{patient.age}} anos</p>
-      <p><strong>Endereço:</strong> {{patient.address}}</p>
-      <p><strong>Telefone:</strong> {{patient.phone}}</p>
+      <h2>Patient Information</h2>
+      <p><strong>Name:</strong> {{capitalize patient.name}}</p>
+      <p><strong>Age:</strong> {{patient.age}} years</p>
+      <p><strong>Address:</strong> {{patient.address}}</p>
+      <p><strong>Phone:</strong> {{patient.phone}}</p>
       
       {{#if patient.birthdate}}
-        <p><strong>Data de Nascimento:</strong> {{formatDate patient.birthdate 'dd/mm/yyyy'}}</p>
-        <p><strong>Idade calculada:</strong> {{calcAge patient.birthdate}} anos</p>
+        <p><strong>Birth Date:</strong> {{formatDate patient.birthdate 'dd/mm/yyyy'}}</p>
+        <p><strong>Calculated Age:</strong> {{calcAge patient.birthdate}} years</p>
       {{/if}}
       
       {{#if patient.insurance}}
-        <p><strong>Convênio:</strong> {{patient.insurance}}</p>
+        <p><strong>Insurance:</strong> {{patient.insurance}}</p>
       {{/if}}
     </div>
 
     <div class="consultation">
-      <h2>Detalhes da Consulta</h2>
-      <p><strong>Data:</strong> {{consultation.date}}</p>
-      <p><strong>Horário:</strong> {{consultation.time}}</p>
-      <p><strong>Motivo:</strong> {{consultation.reason}}</p>
+      <h2>Consultation Details</h2>
+      <p><strong>Date:</strong> {{consultation.date}}</p>
+      <p><strong>Time:</strong> {{consultation.time}}</p>
+      <p><strong>Reason:</strong> {{consultation.reason}}</p>
       
       {{#if consultation.vitals}}
-        <h3>Sinais Vitais</h3>
+        <h3>Vital Signs</h3>
         <table>
           <tr>
-            <th>Medida</th>
-            <th>Valor</th>
+            <th>Measurement</th>
+            <th>Value</th>
           </tr>
           {{#each consultation.vitals}}
             <tr>
@@ -161,40 +161,40 @@
       {{/if}}
       
       {{#if consultation.cost}}
-        <p><strong>Valor da Consulta:</strong> {{formatCurrency consultation.cost}}</p>
+        <p><strong>Consultation Cost:</strong> {{formatCurrency consultation.cost}}</p>
       {{/if}}
     </div>
 
     <div class="prescription">
-      <h2>Prescrição Médica</h2>
+      <h2>Medical Prescription</h2>
       
       {{#ifCond prescription.length '>' 0}}
         {{#numbered_list prescription}}
           <strong>{{this.medication}}</strong> - {{this.dosage}}
-          <p>Tomar a cada {{this.frequency}} por {{this.duration}}</p>
+          <p>Take every {{this.frequency}} for {{this.duration}}</p>
           
           {{#if this.priority}}
             <span class="tag priority-{{this.priority}}">
-              Prioridade: {{capitalize this.priority}}
+              Priority: {{capitalize this.priority}}
             </span>
           {{/if}}
         {{/numbered_list}}
       {{else}}
-        <p>Nenhuma prescrição médica necessária.</p>
+        <p>No medical prescription needed.</p>
       {{/ifCond}}
       
       {{#if consultation.notes}}
-        <h3>Observações</h3>
+        <h3>Notes</h3>
         <p>{{consultation.notes}}</p>
       {{/if}}
     </div>
     
     <div class="footer">
-      <p>Este documento é um relatório médico oficial emitido em {{consultation.date}}.</p>
-      <p>© {{consultation.date.split("/")[2]}} - Todos os direitos reservados</p>
+      <p>This is an official medical report issued on {{consultation.date}}.</p>
+      <p>© {{consultation.date.split("/")[2]}} - All rights reserved</p>
       
       {{#repeat 3}}
-        <div>Linha de assinatura {{index}}</div>
+        <div>Signature line {{index}}</div>
       {{/repeat}}
     </div>
   </div>

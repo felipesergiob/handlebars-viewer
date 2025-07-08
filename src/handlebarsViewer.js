@@ -231,7 +231,7 @@ const generatePDFAndNotify = async (templatePath, jsonPath) => {
     }
 };
 
-const setupFileWatchers = (templatePath, jsonPath) => {
+const setupFileWatchers = () => {
     try {
         watchersSetup = true;
     } catch (error) {

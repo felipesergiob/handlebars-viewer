@@ -83,14 +83,18 @@
     "lint": "eslint .",
     "pretest": "npm run lint"
   },
+  "author": {
+    "name": "felipesergio",
+    "email": "felipessmbf@gmail.com"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/handlebars-viewer.git"
+    "url": "https://github.com/felipesergiob/handlebars-viewer.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/handlebars-viewer/issues"
+    "url": "https://github.com/felipesergiob/handlebars-viewer/issues"
   },
-  "homepage": "https://github.com/yourusername/handlebars-viewer#readme",
+  "homepage": "https://github.com/felipesergiob/handlebars-viewer#readme",
   "license": "MIT",
   "devDependencies": {
     "@types/node": "20.x",
